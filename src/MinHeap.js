@@ -1,4 +1,4 @@
-function MinHeap(){
+function MinHeap(updateState){
   let list = [];
   
   //Heapify
@@ -68,28 +68,7 @@ function MinHeap(){
      }
   }
   
-  //Return min value
-  this.findMin = () => list[0];
-  
-  //Remove min val
-  this.deleteMin = () => {
-    this.delete(list[0]);
-  }
-  
-  //Remove and return min value
-  this.extractMin = () => {
-    const min = list[0];
-    this.delete(min);
-    return min;
-  }
-  
-  //Size
-  this.size = () => list.length;
-  
-  //IsEmpty
-  this.isEmpty = () => list.length === 0;
-  
-  //Return head
+
   this.getList = () => list;
 }
 

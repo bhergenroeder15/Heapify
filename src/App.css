@@ -5,6 +5,22 @@
   text-align: center;
 }
 
+#maxHeap, #minHeap {
+    display: flex;
+    padding: 10px;
+}
+
+button {
+    margin: 10px;
+}
+
+.addButton {
+    background-color: forestgreen;
+}
+
+.removeButton{
+    background-color: #871104;
+}
 
 /* Graph CSS: */
 .tree,
