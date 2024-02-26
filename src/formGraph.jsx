@@ -10,6 +10,7 @@ function TreeNode({ value, children }){
 }
 
 function formGraph(arr){
+    // console.log(arr)
     const process = (index) => {
         if (index >= arr.length) return null;
         return (
