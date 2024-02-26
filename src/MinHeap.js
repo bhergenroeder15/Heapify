@@ -37,35 +37,32 @@ function MinHeap(updateState){
     }else{
       list.push(num);
       
-      //Heapify
-      for (let i = parseInt(list.length / 2 - 1); i >= 0; i--) {
-         this.minHeapify(list, list.length, i); 
+    let currentIndex = size;
+    let parentIndex = Math.floor((currentIndex - 1) / 2);
+
+    // Compare the new element with its parent and swap if necessary
+    while (currentIndex > 0 && list[parentIndex] > num) {
+        // Swap parent and current node
+        [list[parentIndex], list[currentIndex]] = [list[currentIndex], list[parentIndex]];
+        // Move up the tree
+        currentIndex = parentIndex;
+        parentIndex = Math.floor((currentIndex - 1) / 2);
       }
     }
+
+    updateState([...list]);
+
   }
   
   //Remove value
-  this.delete = (num) => {
-    const size = list.length;
-    
-    //Get the index of the number to be removed
-    let i;
-    for(i = 0; i < size; i++){
-      if(list[i] === num){
-        break;
-      }
-    }
-    
-    //Swap the number with last element
-    [list[i], list[size - 1]] = [list[size - 1], list[i]];
-
-    //Remove the last element
-    list.splice(size - 1);
+  this.delete = () => {
+    list.shift()
     
     //Heapify the list again
     for (let i = parseInt(list.length / 2 - 1); i >= 0; i--) {
          this.minHeapify(list, list.length, i); 
-     }
+      }
+    updateState([...list]);
   }
   
 

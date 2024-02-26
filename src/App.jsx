@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import formGraph from './formGraph'
 import './App.css'
 import MaxHeap from './MaxHeap'
@@ -12,12 +12,10 @@ function App() {
   const [minList, setMinList] = useState([])
 
   const [maxHeap, setMaxHeap] = useState(new MaxHeap(setMaxList))
-  const [minHeap, setMinHeap] = useState(new MinHeap())
+  const [minHeap, setMinHeap] = useState(new MinHeap(setMinList))
 
 
-  // useEffect(() => {
-  //   setMaxList(maxHeap.getList())
-  // }, [maxHeap])
+
   return (
     <>
      <h1>Heapify</h1>
@@ -28,10 +26,10 @@ function App() {
           <button className='addButton' type='submit'>Add to Max Heap</button>
         </form>
         <button className='removeButton' onClick={() => {maxHeap.delete()}}>Remove priority element</button>
-
       </div>
 
       {formGraph(maxList)}
+
       <h2>Min Heap</h2>
       <div id='minHeap'>
         <form onSubmit={(e) => {e.preventDefault(); minHeap.insert(Number(minInput))}}>
@@ -39,9 +37,10 @@ function App() {
           <button className='addButton' type='submit'>Add to Min Heap</button>
         </form>
         <button className='removeButton' onClick={() => {minHeap.delete()}}>Remove priority element</button>
-
       </div>
-      {formGraph(minHeap.getList())}
+
+      {formGraph(minList)}
+
     </>
   )
 }
